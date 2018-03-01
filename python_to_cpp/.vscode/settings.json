@@ -1,0 +1,16 @@
+{
+    "python.pythonPath": "/usr/bin/python3",
+    "files.associations": {
+        "python.h": "c",
+        "cctype": "cpp",
+        "cmath": "cpp",
+        "cstddef": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "cwchar": "cpp",
+        "cstdint": "cpp",
+        "iostream": "cpp",
+        "malloc.h": "c",
+        "string.h": "c"
+    }
+}
