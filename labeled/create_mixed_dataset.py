@@ -53,7 +53,6 @@ f_train_labels = open('train-labels-idx1-ubyte.overwritten', 'r+b')
 # f_train_labels.write((num_train + 60000).to_bytes(4, byteorder="big", signed=False))
 # f_train_labels.seek(0, 2)
 f_train_labels.seek(8, 0)
-f_train_labels
 for label in train_labels:
     f_train_labels.write((label).to_bytes(1, byteorder="big", signed=False))
 f_train_labels.close()
