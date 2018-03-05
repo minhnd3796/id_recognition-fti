@@ -8,7 +8,7 @@ $ cp build/lib.{arch}/Id.{arch}.so .
 $ mv Id.{arch}.so Id.so
 * Just rename to Id.so
 
-$ python3 main.py test.png lenet_deploy.prototxt mixed_lenet_8817_id_digit.caffemodel
+$ python3 main.py test.png lenet_deploy.prototxt lenet_iter_100000.caffemodel
 * Enjoy!
 
 * Browse main.py, see that I caught and stored content into 3 vars:
