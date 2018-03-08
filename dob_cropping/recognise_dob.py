@@ -12,7 +12,7 @@ def crop_dob(img):
     
     # Initialise data structures
     num_contours = len(contours)
-    contour_areas = [0] * num_contours
+    # contour_areas = [0] * num_contours
     heights = [0] * num_contours
     
     # Get heights for all contours
