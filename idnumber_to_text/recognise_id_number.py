@@ -109,8 +109,8 @@ def idToStr(img, net_prototxt, caffemodel, useGPU=True):
             y = rects[digit_order_idx[i]][1]
             w = rects[digit_order_idx[i]][2]
             h = rects[digit_order_idx[i]][3]
-            plt.imshow(img[y:y + h + 1, x:x + w + 1], cmap = 'gray')
-            plt.show()
+            # plt.imshow(img[y:y + h + 1, x:x + w + 1], cmap = 'gray')
+            # plt.show()
             digit_img[i] = square_padding(img[y:y + h + 1, x:x + w + 1])
 
         # Initialise a new net
@@ -203,8 +203,8 @@ def merge_rects(rects, id_groups):
 
 def crop_id(image_path, num_top_contours=12, threshold_dist=12):
     img = cv2.imread(image_path, 0)
-    plt.imshow(img, cmap = 'gray')
-    plt.show()
+    # plt.imshow(img, cmap = 'gray')
+    # plt.show()
     _, thresh = cv2.threshold(img, 127, 255, 0)
     _, contours, _ = cv2.findContours(thresh, mode=cv2.RETR_EXTERNAL, method=2)
     num_contours = len(contours)
