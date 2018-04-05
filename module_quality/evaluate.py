@@ -1,9 +1,10 @@
 from pandas import read_csv
 import numpy as np
-from os import listdir
+from os import listdir, mkdir
 from ntpath import basename
 from recognise_id_number import idToStr, crop_id
 from shutil import copyfile
+from os.path import exists
 
 dataset = read_csv('table.csv')
 _id = dataset.iloc[:, 1].values
@@ -31,11 +32,22 @@ _id = _id[np.array(available_pos_from_table)]
 dob = dob[np.array(available_pos_from_table)]
 
 correct_id = 0
-for i in range(len(file)):
+total = len(file)
+for i in range(total):
     pred_id = idToStr(crop_id('../id_number_combined/' + file_from_dir[i]), '../lenet_deploy.prototxt', '../lenet_iter_100000.caffemodel')
-    if str(_id[i]) == pred_id:
+    if pred_id != '':
+        for j in range(len(pred_id)):
+            if pred_id[j] != '0':
+                break
+        pred_id = pred_id[j:]
+    matches = str(_id[i]) == pred_id
+    if matches:
         correct_id += 1
     else:
+        if not exists('id_error_images/'):
+            mkdir('id_error_images/')
         copyfile('../id_number_combined/' + file_from_dir[i], 'id_error_images/' + file_from_dir[i])
-
-print('Accuracy:', correct_id * 1.0 / len(file))
+    print(">> Testing", file, matches)
+print('Correct:', correct_id)
+print('Total:', total)
+print('Accuracy:', correct_id * 1.0 / total)
